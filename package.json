@@ -3,10 +3,14 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve -o",
     "build": "ng build",
+    "build:href": "ng build --base-href ./",
+    "build:github": "npm run delete:docs && npm run build:href && npm run copy:dist",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "delete:docs": "del docs",
+    "copy:dist": "copyfiles dist/pipes-app/browser/* ./docs -f"
   },
   "private": true,
   "dependencies": {
@@ -18,6 +22,8 @@
     "@angular/platform-browser": "^17.1.0",
     "@angular/platform-browser-dynamic": "^17.1.0",
     "@angular/router": "^17.1.0",
+    "copyfiles": "^2.4.1",
+    "del-cli": "^5.1.0",
     "primeflex": "^3.3.1",
     "primeicons": "^6.0.1",
     "primeng": "^17.5.0",
