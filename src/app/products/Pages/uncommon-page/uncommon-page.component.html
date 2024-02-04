@@ -56,6 +56,7 @@
 
   <div class="col-12 md:col-6">
     <p-fieldset legend="Async Pipe" [toggleable]="true">
+      <h3>Ejemplo: Mirar la consola para ver el Observable</h3>
       <pre *ngIf="!(myObservableTimer | async) else observableTimer">Resolviendo observable</pre>
       <ng-template #observableTimer>
         <pre>Observable resuelto:{{ observableTimerCount }}</pre>
