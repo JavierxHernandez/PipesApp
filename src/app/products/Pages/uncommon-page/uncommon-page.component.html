@@ -1,0 +1,68 @@
+<p-panel header="Pipes no tan comunes" class="p-2">
+  <p>
+    Pipes incluídos en Angular - Usualmente en el CommonModule.
+  </p>
+</p-panel>
+
+<div class="grid">
+  <div class="col-12 md:col-6">
+    <p-fieldset legend="i18nSelect Pipe" [toggleable]="true">
+      <h3>Ejemplo:</h3>
+      <p>Saludos <strong>{{ name }}</strong>, es un placer <strong>{{ gender | i18nSelect:invitationMap }}</strong> a
+        nuestro evento.</p>
+      <p-button (click)="changeClient()" label="Cambiar Persona"></p-button>
+    </p-fieldset>
+  </div>
+
+  <div class="col-12 md:col-6">
+    <p-fieldset legend="i18nPlural Pipe" [toggleable]="true">
+      <h3>Ejemplo:</h3>
+      <p>Actualmente <strong>{{ clients.length | i18nPlural:clientsMap }}</strong></p>
+      <p-button (click)="deleteClient()" label="Borrar cliente"></p-button>
+    </p-fieldset>
+  </div>
+
+  <div class="col-12 md:col-6">
+    <p-fieldset legend="Slice Pipe" [toggleable]="true">
+      <h3>Ejemplo:</h3>
+      <pre>{{ clients }}</pre>
+      <b>Slice:0:2</b>
+      <pre>{{ clients | slice:0:2 }}</pre>
+      <b>Slice:3:4</b>
+      <pre>{{ clients | slice:3:4 }}</pre>
+      <b>Slice:0:-5</b>
+      <pre>{{ clients | slice:0:-5 }}</pre>
+    </p-fieldset>
+  </div>
+
+  <div class="col-12 md:col-6">
+    <p-fieldset legend="Json Pipe" [toggleable]="true">
+      <h3>Ejemplo:</h3>
+      <pre>{{ person }}</pre>
+      <pre>{{ person | json }}</pre>
+    </p-fieldset>
+  </div>
+
+  <div class="col-12 md:col-6">
+    <p-fieldset legend="KeyValue Pipe" [toggleable]="true">
+      <h3>Ejemplo: Se puede utilizar un json en un ngFor.</h3>
+      <ul>
+        <li *ngFor="let item of person | keyvalue">
+          <b>{{ item.key | titlecase }}:</b> {{ item.value }}
+        </li>
+      </ul>
+    </p-fieldset>
+  </div>
+
+  <div class="col-12 md:col-6">
+    <p-fieldset legend="Async Pipe" [toggleable]="true">
+      <pre *ngIf="!(myObservableTimer | async) else observableTimer">Resolviendo observable</pre>
+      <ng-template #observableTimer>
+        <pre>Observable resuelto:{{ observableTimerCount }}</pre>
+      </ng-template>
+      <hr>
+      <pre *ngIf="!(promiseValue | async)">Resolviendo promesa</pre>
+      <pre>{{ promiseValue | async }}</pre>
+    </p-fieldset>
+  </div>
+</div>
